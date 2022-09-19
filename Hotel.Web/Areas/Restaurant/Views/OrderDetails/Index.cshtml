@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Hotel.Web.Models.OrderDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>ORDER DETAILS</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Menus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customers.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Menus.DishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payments.PaymentMethods)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderDetailId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderDetailId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderDetailId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
